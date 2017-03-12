@@ -19,3 +19,22 @@
 (def test-show-dead-cell
   (testing "showing a dead cell gets a blank"
     (is (= "" (conway/show conway/dead)))))
+
+(def test-create-row-of-cells
+  (testing "creating a row of cells of 8 cells"
+    (is (= 8 (count (conway/row 8 [0 3 7]))))))
+
+(def test-create-row-of-cells
+  (testing "creating a row of cells of 8 cells"
+    (let [row (conway/row 8 [0 3 7])]
+      (is (= conway/live (nth row 0)))
+      (is (= conway/dead (nth row 1)))
+      (is (= conway/dead (nth row 2)))
+      (is (= conway/live (nth row 3)))
+      (is (= conway/dead (nth row 4)))
+      (is (= conway/dead (nth row 5)))
+      (is (= conway/dead (nth row 6)))
+      (is (= conway/live (nth row 7)))
+    )))
+
+
