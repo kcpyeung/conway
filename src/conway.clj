@@ -22,4 +22,17 @@
   (add-cell '() (dec count)))
 
 
+(defn board [rows live-coord]
+  (def add-row
+    (fn [coll cnt]
+      (if (= -1 cnt)
+        coll
+        (add-row (conj coll (row rows (nth live-coord cnt))) (dec cnt)))))
+  (add-row '() (dec rows)))
+
+
+
+
+
+
 

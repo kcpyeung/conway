@@ -37,4 +37,14 @@
       (is (= conway/live (nth row 7)))
     )))
 
+(def test-create-board
+  (testing "creating a board made up of rows of cells"
+    (let [board (conway/board 8 [[] [] [] [] [] [] [] []])]
+      (is (= 8 (count board))))))
+
+
+
+
+
+
 
