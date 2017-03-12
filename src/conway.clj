@@ -29,6 +29,8 @@
         (add-row (conj coll (row rows (nth live-coord cnt))) (dec cnt)))))
   (add-row '() (dec rows)))
 
+(defn print-row [row]
+  (apply str (map :status row)))
 
 
 

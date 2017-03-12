@@ -41,6 +41,10 @@
     (let [board (conway/board 8 [[] [] [] [] [] [] [] []])]
       (is (= 8 (count board))))))
 
+(def test-print-row
+  (testing "printing a row gets its characters"
+    (let [row (conway/row 8 [0 3 7])]
+      (is (= "*  *   *" (conway/print-row row))))))
 
 
 
