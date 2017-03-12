@@ -3,7 +3,7 @@
 (defstruct cell :status)
 
 (def live (struct cell "*"))
-(def dead (struct cell ""))
+(def dead (struct cell " "))
 
 (defn flip [cell]
   (if (= cell live) dead live))
@@ -21,7 +21,6 @@
           (add-cell (conj coll dead) (dec cnt))))))
   (add-cell '() (dec count)))
 
-
 (defn board [rows live-coord]
   (def add-row
     (fn [coll cnt]
@@ -29,8 +28,6 @@
         coll
         (add-row (conj coll (row rows (nth live-coord cnt))) (dec cnt)))))
   (add-row '() (dec rows)))
-
-
 
 
 

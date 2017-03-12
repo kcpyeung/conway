@@ -3,7 +3,6 @@
     [clojure.test :refer [deftest testing is]]
     [conway]))
 
-
 (deftest test-flip-dead
   (testing "flipping a dead cell makes it live"
     (is (= conway/live (conway/flip conway/dead)))))
@@ -18,7 +17,7 @@
 
 (def test-show-dead-cell
   (testing "showing a dead cell gets a blank"
-    (is (= "" (conway/show conway/dead)))))
+    (is (= " " (conway/show conway/dead)))))
 
 (def test-create-row-of-cells
   (testing "creating a row of cells of 8 cells"
