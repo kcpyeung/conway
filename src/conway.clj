@@ -32,6 +32,9 @@
 (defn print-row [row]
   (apply str (map :status row)))
 
+(defn print-board [board]
+  (map print-row board))
+
 
 
 

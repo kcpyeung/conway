@@ -46,6 +46,19 @@
     (let [row (conway/row 8 [0 3 7])]
       (is (= "*  *   *" (conway/print-row row))))))
 
+(def test-print-board
+  (testing "printing a board gets its characters"
+    (let [board (conway/board 8 [[0] [1] [2] [3] [4] [5] [6] [7]])]
+      (is (= '("*       "
+               " *      "
+               "  *     "
+               "   *    "
+               "    *   "
+               "     *  "
+               "      * "
+               "       *") (conway/print-board board))))))
+
+
 
 
 
