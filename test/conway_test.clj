@@ -20,11 +20,11 @@
     (is (= " " (conway/show conway/dead)))))
 
 (def test-create-row-of-cells
-  (testing "creating a row of cells of 8 cells"
+  (testing "creating the correct number of cells"
     (is (= 8 (count (conway/row 8 [0 3 7]))))))
 
 (def test-create-row-of-cells
-  (testing "creating a row of cells of 8 cells"
+  (testing "creating specified live cells"
     (let [row (conway/row 8 [0 3 7])]
       (is (= conway/live (nth row 0)))
       (is (= conway/dead (nth row 1)))
