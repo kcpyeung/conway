@@ -58,6 +58,14 @@
                "      * "
                "       *") (conway/print-board board))))))
 
+(def test-get-cell
+  (testing "getting a cell by its coord"
+    (let [board (conway/board 8 [[0] [1] [2] [3] [4] [5] [6] [7]])]
+      (is (= (conway/get-cell board 0 0) conway/live))
+      (is (= (conway/get-cell board 0 1) conway/dead))
+      (is (= (conway/get-cell board 1 0) conway/dead))
+      (is (= (conway/get-cell board 1 1) conway/live))
+    )))
 
 
 

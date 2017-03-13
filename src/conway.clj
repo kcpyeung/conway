@@ -35,6 +35,6 @@
 (defn print-board [board]
   (map print-row board))
 
-
-
+(defn get-cell [board x y]
+  (nth (nth board y) x))
 
