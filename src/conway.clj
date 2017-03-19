@@ -1,9 +1,7 @@
 (ns conway)
 
-(defstruct cell :status)
-
-(def live (struct cell "*"))
-(def dead (struct cell " "))
+(def live {:status "*"})
+(def dead {:status " "})
 
 (defn flip [cell]
   (if (= cell live) dead live))
