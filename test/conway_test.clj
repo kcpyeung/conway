@@ -106,6 +106,11 @@
           new-cell (conway/step-cell board [1 1])]
       (is (= conway/live new-cell)))))
 
+(deftest test-step-cell-over-population
+  (testing "a live cell dies of over-population"
+    (let [board (conway/board 8 [[0] [0 1 2] [2] [3] [4] [5] [6] [7]])
+          new-cell (conway/step-cell board [1 1])]
+      (is (= conway/dead new-cell)))))
 
 
 
