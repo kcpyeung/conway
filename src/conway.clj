@@ -65,7 +65,7 @@
     (map #(get-cell board %) neighbour-coords)
   ))
 
-(defn- step-live-cell [board cell live-neighbour-count]
+(defn- step-live-cell [live-neighbour-count]
   (case live-neighbour-count
     2 live
     3 live
@@ -80,7 +80,7 @@
         live-neighbours (filter live? neighbours)
         live-neighbour-count (count live-neighbours)]
     (if (live? current-cell)
-      (step-live-cell board cell live-neighbour-count)
+      (step-live-cell live-neighbour-count)
       (step-dead-cell live-neighbour-count))))
 
 
