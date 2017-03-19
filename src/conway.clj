@@ -56,6 +56,10 @@
         (map #(vector (inc x) %) neighbouring-y))
   )))
 
+(defn get-neighbours [board x y]
+  (let [neighbour-coords (get-neighbour-coords (count board) x y)]
+    (map #(get-cell board %) neighbour-coords)
+  ))
 
 
 

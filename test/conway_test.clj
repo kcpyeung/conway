@@ -83,9 +83,10 @@
   (testing "getting far bottom cells does not go over bottom edge"
     (is (= '([2 2] [2 3] [3 2]) (conway/get-neighbour-coords 4 3 3)))))
 
-
-
-
+(deftest test-get-neighbours
+  (testing "getting neighbours of (0,0) returns cells in (0,1), (1,0) and (1,1)"
+    (let [board (conway/board 8 [[0] [1] [2] [3] [4] [5] [6] [7]])]
+      (is (= (list conway/dead conway/dead conway/live) (conway/get-neighbours board 0 0))))))
 
 
 
