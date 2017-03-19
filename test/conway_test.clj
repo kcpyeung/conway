@@ -11,19 +11,19 @@
   (testing "flipping a live cell makes it dead"
     (is (= conway/dead (conway/flip conway/live)))))
 
-(def test-show-live-cell
+(deftest test-show-live-cell
   (testing "showing a live cell gets a star"
     (is (= "*" (conway/show conway/live)))))
 
-(def test-show-dead-cell
+(deftest test-show-dead-cell
   (testing "showing a dead cell gets a blank"
     (is (= " " (conway/show conway/dead)))))
 
-(def test-create-row-of-cells
+(deftest test-create-row-of-cells
   (testing "creating the correct number of cells"
     (is (= 8 (count (conway/row 8 [0 3 7]))))))
 
-(def test-create-row-of-cells
+(deftest test-create-row-of-cells
   (testing "creating specified live cells"
     (let [row (conway/row 8 [0 3 7])]
       (is (= conway/live (nth row 0)))
@@ -36,17 +36,17 @@
       (is (= conway/live (nth row 7)))
     )))
 
-(def test-create-board
+(deftest test-create-board
   (testing "creating a board made up of rows of cells"
     (let [board (conway/board 8 [[] [] [] [] [] [] [] []])]
       (is (= 8 (count board))))))
 
-(def test-print-row
+(deftest test-print-row
   (testing "printing a row gets its characters"
     (let [row (conway/row 8 [0 3 7])]
       (is (= "*  *   *" (conway/print-row row))))))
 
-(def test-print-board
+(deftest test-print-board
   (testing "printing a board gets its characters"
     (let [board (conway/board 8 [[0] [1] [2] [3] [4] [5] [6] [7]])]
       (is (= '("*       "
@@ -58,7 +58,7 @@
                "      * "
                "       *") (conway/print-board board))))))
 
-(def test-get-cell
+(deftest test-get-cell
   (testing "getting a cell by its coord"
     (let [board (conway/board 8 [[0] [1] [2] [3] [4] [5] [6] [7]])]
       (is (= (conway/get-cell board 0 0) conway/live))
@@ -66,6 +66,28 @@
       (is (= (conway/get-cell board 1 0) conway/dead))
       (is (= (conway/get-cell board 1 1) conway/live))
     )))
+
+(deftest test-get-neighbour-coords-middles
+  (testing "getting middle cells has 8 neighbours and excludes self"
+    (is (= '([0 0] [0 1] [0 2] [1 0] [1 2] [2 0] [2 1] [2 2]) (conway/get-neighbour-coords 4 1 1)))))
+
+(deftest test-get-neighbour-coords-negatives
+  (testing "getting top or left cells does not return negatives"
+    (is (= '([1 0] [1 1] [2 1] [3 0] [3 1]) (conway/get-neighbour-coords 4 2 0)))))
+
+(deftest test-get-neighbour-coords-far-right
+  (testing "getting far right cells does not go over right edge"
+    (is (= '([2 0] [2 1] [3 1]) (conway/get-neighbour-coords 4 3 0)))))
+
+(deftest test-get-neighbour-coords-far-bottom
+  (testing "getting far bottom cells does not go over bottom edge"
+    (is (= '([2 2] [2 3] [3 2]) (conway/get-neighbour-coords 4 3 3)))))
+
+
+
+
+
+
 
 
 

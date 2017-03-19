@@ -38,3 +38,30 @@
 (defn get-cell [board x y]
   (nth (nth board y) x))
 
+(defn- unwanted-cells? [board-size x y cell]
+  (let [[x' y'] cell]
+    (or
+      (< x' 0)
+      (< y' 0)
+      (>= x' board-size)
+      (>= y' board-size)
+      (and (= x x') (= y y'))
+     )))
+
+(defn get-neighbour-coords [board-size x y]
+  (let [neighbouring-y (range (dec y) (+ 2 y))]
+    (remove #(unwanted-cells? board-size x y %)
+      (concat
+        (map #(vector (dec x) %) neighbouring-y)
+        (map #(vector      x  %) neighbouring-y)
+        (map #(vector (inc x) %) neighbouring-y))
+  )))
+
+
+
+
+
+
+
+
+
