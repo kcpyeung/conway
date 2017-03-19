@@ -71,6 +71,9 @@
     3 live
     dead))
 
+(defn- step-dead-cell [live-neighbour-count]
+  (if (= 3 live-neighbour-count) live dead))
+
 (defn step-cell [board cell]
   (let [current-cell (get-cell board cell)
         neighbours (get-neighbours board cell)
@@ -78,7 +81,7 @@
         live-neighbour-count (count live-neighbours)]
     (if (live? current-cell)
       (step-live-cell board cell live-neighbour-count)
-      dead)))
+      (step-dead-cell live-neighbour-count))))
 
 
 

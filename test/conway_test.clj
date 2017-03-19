@@ -112,6 +112,11 @@
           new-cell (conway/step-cell board [1 1])]
       (is (= conway/dead new-cell)))))
 
+(deftest test-dead-cell-comes-alive
+  (testing "a dead cell with exactly 3 neighbours comes alive"
+    (let [board (conway/board 8 [[0] [1 2] [2] [3] [4] [5] [6] [7]])
+          new-cell (conway/step-cell board [1 2])]
+      (is (= conway/live new-cell)))))
 
 
 
