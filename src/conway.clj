@@ -35,8 +35,9 @@
 (defn print-board [board]
   (map print-row board))
 
-(defn get-cell [board x y]
-  (nth (nth board y) x))
+(defn get-cell [board cell]
+  (let [[x y] cell]
+    (nth (nth board y) x)))
 
 (defn- unwanted-cells? [board-size x y cell]
   (let [[x' y'] cell]
