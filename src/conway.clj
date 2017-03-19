@@ -6,6 +6,9 @@
 (defn flip [cell]
   (if (= cell live) dead live))
 
+(defn live? [cell]
+  (= live cell))
+
 (defn show [cell]
   (:status cell))
 
@@ -62,7 +65,13 @@
     (map #(get-cell board %) neighbour-coords)
   ))
 
-
+(defn step-cell [board cell]
+  (let [neighbours (get-neighbours board cell)
+        live-neighbours (filter live? neighbours)
+        live-neighbour-count (count live-neighbours)]
+    (if (< live-neighbour-count 2)
+      dead
+      live)))
 
 
 

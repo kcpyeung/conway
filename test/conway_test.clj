@@ -88,6 +88,12 @@
     (let [board (conway/board 8 [[0] [1] [2] [3] [4] [5] [6] [7]])]
       (is (= (list conway/dead conway/dead conway/live) (conway/get-neighbours board [0 0]))))))
 
+(deftest test-step-cell-under-population
+  (testing "a cell dies of under-population"
+    (let [board (conway/board 8 [[0] [1] [2] [3] [4] [5] [6] [7]])
+          new-origin (conway/step-cell board [0 0])]
+      (is (= conway/dead new-origin)))))
+
 
 
 
