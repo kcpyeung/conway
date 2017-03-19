@@ -69,25 +69,24 @@
 
 (deftest test-get-neighbour-coords-middles
   (testing "getting middle cells has 8 neighbours and excludes self"
-    (is (= '([0 0] [0 1] [0 2] [1 0] [1 2] [2 0] [2 1] [2 2]) (conway/get-neighbour-coords 4 1 1)))))
+    (is (= '([0 0] [0 1] [0 2] [1 0] [1 2] [2 0] [2 1] [2 2]) (conway/get-neighbour-coords 4 [1 1])))))
 
 (deftest test-get-neighbour-coords-negatives
   (testing "getting top or left cells does not return negatives"
-    (is (= '([1 0] [1 1] [2 1] [3 0] [3 1]) (conway/get-neighbour-coords 4 2 0)))))
+    (is (= '([1 0] [1 1] [2 1] [3 0] [3 1]) (conway/get-neighbour-coords 4 [2 0])))))
 
 (deftest test-get-neighbour-coords-far-right
   (testing "getting far right cells does not go over right edge"
-    (is (= '([2 0] [2 1] [3 1]) (conway/get-neighbour-coords 4 3 0)))))
+    (is (= '([2 0] [2 1] [3 1]) (conway/get-neighbour-coords 4 [3 0])))))
 
 (deftest test-get-neighbour-coords-far-bottom
   (testing "getting far bottom cells does not go over bottom edge"
-    (is (= '([2 2] [2 3] [3 2]) (conway/get-neighbour-coords 4 3 3)))))
+    (is (= '([2 2] [2 3] [3 2]) (conway/get-neighbour-coords 4 [3 3])))))
 
 (deftest test-get-neighbours
   (testing "getting neighbours of (0,0) returns cells in (0,1), (1,0) and (1,1)"
     (let [board (conway/board 8 [[0] [1] [2] [3] [4] [5] [6] [7]])]
-      (is (= (list conway/dead conway/dead conway/live) (conway/get-neighbours board 0 0))))))
-
+      (is (= (list conway/dead conway/dead conway/live) (conway/get-neighbours board [0 0]))))))
 
 
 

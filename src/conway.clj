@@ -47,8 +47,9 @@
       (and (= x x') (= y y'))
      )))
 
-(defn get-neighbour-coords [board-size x y]
-  (let [neighbouring-y (range (dec y) (+ 2 y))]
+(defn get-neighbour-coords [board-size cell]
+  (let [[x y] cell
+        neighbouring-y (range (dec y) (+ 2 y))]
     (remove #(unwanted-cells? board-size x y %)
       (concat
         (map #(vector (dec x) %) neighbouring-y)
@@ -56,8 +57,8 @@
         (map #(vector (inc x) %) neighbouring-y))
   )))
 
-(defn get-neighbours [board x y]
-  (let [neighbour-coords (get-neighbour-coords (count board) x y)]
+(defn get-neighbours [board cell]
+  (let [neighbour-coords (get-neighbour-coords (count board) cell)]
     (map #(get-cell board %) neighbour-coords)
   ))
 
