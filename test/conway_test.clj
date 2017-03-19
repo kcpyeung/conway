@@ -89,12 +89,22 @@
       (is (= (list conway/dead conway/dead conway/live) (conway/get-neighbours board [0 0]))))))
 
 (deftest test-step-cell-under-population
-  (testing "a cell dies of under-population"
+  (testing "a live cell dies of under-population"
     (let [board (conway/board 8 [[0] [1] [2] [3] [4] [5] [6] [7]])
-          new-origin (conway/step-cell board [0 0])]
-      (is (= conway/dead new-origin)))))
+          new-cell (conway/step-cell board [0 0])]
+      (is (= conway/dead new-cell)))))
 
+(deftest test-step-cell-lives-on-2
+  (testing "a live cell lives on with 2 neighbours"
+    (let [board (conway/board 8 [[0] [1] [2] [3] [4] [5] [6] [7]])
+          new-cell (conway/step-cell board [1 1])]
+      (is (= conway/live new-cell)))))
 
+(deftest test-step-cell-lives-on-3
+  (testing "a live cell lives on with 3 neighbours"
+    (let [board (conway/board 8 [[0] [1 2] [2] [3] [4] [5] [6] [7]])
+          new-cell (conway/step-cell board [1 1])]
+      (is (= conway/live new-cell)))))
 
 
 
