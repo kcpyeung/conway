@@ -83,7 +83,13 @@
       (step-live-cell live-neighbour-count)
       (step-dead-cell live-neighbour-count))))
 
+(defn- gen-coord [ys, x]
+  (map #(vector x %) ys))
 
+(defn get-xy [size]
+  (let [r (range 0 size)
+        gc (partial gen-coord r)]
+    (map gc r)))
 
 
 
