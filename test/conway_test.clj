@@ -126,5 +126,11 @@
             [[0 3] [1 3] [2 3] [3 3] [4 3]]
             [[0 4] [1 4] [2 4] [3 4] [4 4]]] (conway/get-xy 5)))))
 
+(deftest test-step-board
+  (testing "a 2-period blinker"
+    (let [starting-position (conway/board 5 [[] [2] [2] [2] []])
+          ending-position (conway/board 5 [[] [] [1 2 3] [] []])
+          computed-position (conway/step-board starting-position)]
+      (is (= computed-position ending-position)))))
 
 

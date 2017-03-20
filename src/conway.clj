@@ -91,6 +91,30 @@
         gc (partial gen-coord r)]
     (map gc r)))
 
+(defn- step-row [board xys]
+  (let [p-step-cell (partial step-cell board)]
+    (map p-step-cell xys)))
+
+(defn step-board [board]
+  (let [coords (get-xy (count board))
+        p-step-row (partial step-row board)]
+    (map p-step-row coords)))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
