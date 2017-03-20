@@ -3,11 +3,11 @@
 (def live {:status "*"})
 (def dead {:status " "})
 
-(defn flip [cell]
-  (if (= cell live) dead live))
-
 (defn live? [cell]
   (= live cell))
+
+(defn flip [cell]
+  (if (live? cell) dead live))
 
 (defn show [cell]
   (:status cell))
